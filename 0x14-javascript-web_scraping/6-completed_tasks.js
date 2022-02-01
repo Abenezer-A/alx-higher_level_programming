@@ -1,24 +1,24 @@
 #!/usr/bin/node
 const request = require('request');
-const url = process.argv[2];
-request(url, function (err, response, body) {
-  if (err) {
-    console.log(err);
-  } else if (response.statusCode === 200) {
-    let completed = {};
-    let tasks = JSON.parse(body);
-    for (let i in tasks) {
-      let task = tasks[i];
-      if (task.completed === true) {
-        if (completed[task.userId] === undefined) {
-          completed[task.userId] = 1;
-        } else {
-          completed[task.userId]++;
+
+if (process.argv.length > 2) {
+  const result = {};
+  request(process.argv[2], (err, res, body) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const data = JSON.parse(body);
+      data.filter(task => {
+        if (task.completed === true) {
+          if (Object.prototype.hasOwnProperty.call(result, task.userId.toString())) {
+            result[task.userId.toString()]++;
+          } else {
+            result[task.userId.toString()] = 1;
+          }
         }
-      }
+        return 'piibPoob';
+      });
+      console.log(result);
     }
-    console.log(completed);
-  } else {
-    console.log('An error occured. Status code: ' + response.statusCode);
-  }
-});
+  });
+}
