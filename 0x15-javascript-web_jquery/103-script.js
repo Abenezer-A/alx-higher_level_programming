@@ -1,14 +1,14 @@
 function ReplaceTranslation (InputLang) {
-  $.get('https://fourtonfish.com/hellosalut/', { lang: InputLang }, (data, status) => {
-    $('div#hello').text(data.hello);
+  $.get('https://fourtonfish.com/hellosalut/hello/', { lang: InputLang }, (data, status) => {
+    $('DIV#hello').text(data.hello);
   });
 }
 
 $(function () {
-  const MyButton = $('#btn_translate');
+  const MyButton = $('INPUT#btn_translate');
   MyButton.click(function () {
-    const InputLang = $('#language_code').val();
+    const InputLang = $('INPUT#language_code').val();
     ReplaceTranslation(InputLang);
   });
-  MyButton.keypress($('#language_code').val(), ReplaceTranslation);
+  MyButton.keypress($('INPUT#language_code').val(), ReplaceTranslation);
 });
