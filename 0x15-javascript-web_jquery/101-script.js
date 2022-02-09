@@ -1,7 +1,7 @@
-const MyList = $('ul.my_list');
-const AddItem = $('div#add_item');
-const RemoveItem = $('div#remove_item');
-const ClearList = $('div#clear_list');
+const MyList = $('UL.my_list');
+const AddItem = $('DIV#add_item');
+const RemoveItem = $('DIV#remove_item');
+const ClearList = $('DIV#clear_list');
 
 AddItem.click(function () {
   MyList.append('<li>Item</li>');
