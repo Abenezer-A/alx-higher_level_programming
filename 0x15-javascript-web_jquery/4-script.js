@@ -1,4 +1,4 @@
-const ToggleHeader = $('div#toggle_header');
+const ToggleHeader = $('DIV#toggle_header');
 ToggleHeader.click(function () {
   const header = $('header');
   if (header.hasClass('red')) {
